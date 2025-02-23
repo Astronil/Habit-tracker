@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "type": "commonjs",
   "scripts": {
-    "start": "parcel index.html",
-    "build": "parcel build index.html --public-url ./",
+    "start": "vite",
+    "build": "vite build",
     "lint": "eslint . --fix",
     "test": "jest --coverage",
     "predeploy": "npm run lint && npm run test && npm run build",
@@ -28,7 +28,8 @@
     "jest-environment-jsdom": "^29.7.0",
     "jsdom": "^26.0.0",
     "parcel": "^2.13.3",
-    "process": "^0.11.10"
+    "process": "^0.11.10",
+    "vite": "^6.1.1"
   },
   "dependencies": {
     "@google/generative-ai": "^0.22.0",

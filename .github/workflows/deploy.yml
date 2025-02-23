@@ -43,7 +43,6 @@ jobs:
           import { getDatabase } from "firebase/database";
           import { getFirestore } from "firebase/firestore";
 
-
           const firebaseConfig = {
             apiKey: "${{ secrets.FIREBASE_API_KEY }}",
             authDomain: "${{ secrets.FIREBASE_AUTH_DOMAIN }}",
@@ -66,8 +65,8 @@ jobs:
           export const GEMINI_API_KEY = "${{ secrets.GEMINI_API_KEY }}";
           EOF
 
-      - name: Build with Parcel
-        run: npm run build
+      - name: Build with Vite
+        run: npm run build # Runs Vite build process
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v4
@@ -75,7 +74,7 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist # Ensure 'dist' matches your Parcel build output folder
+          path: dist # Ensure 'dist' is the Vite build output folder (default)
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
