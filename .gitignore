@@ -402,3 +402,4 @@ FodyWeavers.xsd
 # Ignore Firebase and config files
 firebase-config.js
 config.js
+node_modules/

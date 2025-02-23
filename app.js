@@ -563,3 +563,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+export { callGeminiAI };
