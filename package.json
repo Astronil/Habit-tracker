@@ -1,0 +1,22 @@
+{
+  "name": "habit-tracker",
+  "version": "1.0.0",
+  "description": "A Habit Tracker app with AI chatbot and biometric authentication.",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html --public-url ./",
+    "lint": "eslint . --fix",
+    "test": "jest --coverage",
+    "predeploy": "npm run lint && npm run test && npm run build",
+    "deploy": "gh-pages -d dist"
+  },
+  "devDependencies": {
+    "parcel": "^2.11.0",
+    "eslint": "^8.51.0",
+    "jest": "^29.7.0",
+    "gh-pages": "^6.0.0"
+  },
+  "dependencies": {
+    "firebase": "^10.7.1"
+  }
+}

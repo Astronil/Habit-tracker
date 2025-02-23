@@ -1,0 +1,79 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # Change this if you're using a different branch for deployment
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: "npm"
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Linter
+        run: npm run lint
+
+      - name: Run Tests
+        run: npm test
+
+      - name: Generate Config Files
+        run: |
+          cat <<EOF > src/firebase-config.js
+          // Firebase Configuration (Generated via GitHub Secrets)
+          import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+          import { getAuth } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+          import { getDatabase } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+          import { getFirestore } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+
+          const firebaseConfig = {
+            apiKey: "${{ secrets.FIREBASE_API_KEY }}",
+            authDomain: "${{ secrets.FIREBASE_AUTH_DOMAIN }}",
+            projectId: "${{ secrets.FIREBASE_PROJECT_ID }}",
+            storageBucket: "${{ secrets.FIREBASE_STORAGE_BUCKET }}",
+            messagingSenderId: "${{ secrets.FIREBASE_MESSAGING_SENDER_ID }}",
+            appId: "${{ secrets.FIREBASE_APP_ID }}",
+          };
+
+          const app = initializeApp(firebaseConfig);
+          const auth = getAuth(app);
+          const database = getDatabase(app);
+          const firestore = getFirestore(app);
+
+          window.firebase = { auth, database, firestore };
+          EOF
+
+          cat <<EOF > src/config.js
+          // Gemini API Key (Generated via GitHub Secrets)
+          export const GEMINI_API_KEY = "${{ secrets.GEMINI_API_KEY }}";
+          EOF
+
+      - name: Build with Parcel
+        run: npm run build
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist # Ensure 'dist' matches your Parcel build output folder
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
