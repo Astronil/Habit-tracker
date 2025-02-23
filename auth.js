@@ -5,20 +5,30 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   updateProfile,
-} from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
-import {
-  getDatabase,
-  ref,
-  update,
-  get,
-} from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+} from "firebase/auth";
+import { getDatabase, ref, update, get } from "firebase/database";
+
 // import {
+//   getAuth,
+//   GoogleAuthProvider,
+//   signInWithPopup,
+//   signInWithEmailAndPassword,
+//   createUserWithEmailAndPassword,
+//   updateProfile,
+// } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+// import {
+//   getDatabase,
+//   ref,
+//   update,
+//   get,
+// } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+// // import {
 //   getFirestore,
 //   doc,
 //   setDoc,
 //   getDoc,
 // } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
-import { BiometricAuth } from "./biometric-auth";
+import { BiometricAuth } from "./biometric-auth.js"; // Correct import for the class
 
 const auth = getAuth(); // Initialize Firebase Auth instance
 const database = getDatabase(); // Initialize Firebase Realtime Database

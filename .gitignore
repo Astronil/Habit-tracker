@@ -403,3 +403,5 @@ FodyWeavers.xsd
 firebase-config.js
 config.js
 node_modules/
+/dist
+.parcel-cache

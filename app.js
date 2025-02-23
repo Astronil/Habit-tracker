@@ -1,3 +1,13 @@
+// import {
+//   collection,
+//   getDocs,
+//   query,
+//   where,
+//   addDoc,
+//   updateDoc,
+//   deleteDoc,
+//   doc,
+// } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
 import {
   collection,
   getDocs,
@@ -7,9 +17,9 @@ import {
   updateDoc,
   deleteDoc,
   doc,
-} from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+} from "firebase/firestore";
 import { GoogleGenerativeAI } from "https://cdn.jsdelivr.net/npm/@google/generative-ai/+esm";
-import { GEMINI_API_KEY } from "./config.js";
+import { GEMINI_API_KEY } from "./src/config.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   // Firebase instances

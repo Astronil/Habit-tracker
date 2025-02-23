@@ -4,23 +4,26 @@
 //   getDoc,
 //   setDoc,
 // } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
-import {
-  getDatabase,
-  get,
-  set,
-  ref,
-  // update,
-} from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-} from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+// import {
+//   getDatabase,
+//   get,
+//   set,
+//   ref,
+//   // update,
+// } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+// import {
+//   getAuth,
+//   signInWithEmailAndPassword,
+// } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+
+import { getDatabase, get, set, ref } from "firebase/database"; // Local Firebase import
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth"; // Local Firebase import
 
 // Access Firestore from global scope
 // const firestore = window.firebase.firestore;
 const database = getDatabase();
 
-class BiometricAuth {
+export class BiometricAuth {
   constructor() {
     this.available = false;
     this.init();
