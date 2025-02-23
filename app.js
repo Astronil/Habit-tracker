@@ -19,7 +19,7 @@ import {
   doc,
 } from "firebase/firestore";
 // import { GoogleGenerativeAI } from "https://cdn.jsdelivr.net/npm/@google/generative-ai/+esm";
-import { GoogleGenerativeAI } from "./libs/google-generative-ai.js";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 import { GEMINI_API_KEY } from "./src/config.js";
 
 document.addEventListener("DOMContentLoaded", () => {
