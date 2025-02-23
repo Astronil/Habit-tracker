@@ -12,16 +12,17 @@ import {
   update,
   get,
 } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
-import {
-  getFirestore,
-  doc,
-  setDoc,
-  getDoc,
-} from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+// import {
+//   getFirestore,
+//   doc,
+//   setDoc,
+//   getDoc,
+// } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+import { BiometricAuth } from "./biometric-auth";
 
 const auth = getAuth(); // Initialize Firebase Auth instance
 const database = getDatabase(); // Initialize Firebase Realtime Database
-const firestore = getFirestore(); // Initialize Firestore
+// const firestore = getFirestore(); // Initialize Firestore
 
 // Ensure the BiometricAuth class is available
 const biometricAuth = new BiometricAuth();
@@ -57,6 +58,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const googleBtn = document.getElementById("googleBtn");
   const registerForm = document.getElementById("registerForm");
+  const registerBtn = document.getElementById("registerBtn");
   const loginForm = document.getElementById("loginForm");
   const biometricBtn = document.getElementById("biometricBtn");
   const registerModal = document.getElementById("registerModal");

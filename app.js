@@ -1,10 +1,4 @@
 import {
-  getDatabase,
-  ref,
-  update,
-  onValue,
-} from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
-import {
   collection,
   getDocs,
   query,
@@ -26,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // import 'firebase/auth';
   // import 'firebase/database';
   const auth = window.firebase.auth;
-  const database = window.firebase.database;
+  // const database = window.firebase.database;
   const firestore = window.firebase.firestore;
 
   // Elements
@@ -41,9 +35,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const chatForm = document.getElementById("chatForm");
   const chatMessages = document.getElementById("chatMessages");
   const searchInput = document.getElementById("searchHabits");
-  const filterFrequency = document.getElementById("filterFrequency");
+  // const filterFrequency = document.getElementById("filterFrequency");
   const logoutBtn = document.getElementById("logoutBtn");
-  const generateQRBtn = document.getElementById("generateQRBtn");
+  // const generateQRBtn = document.getElementById("generateQRBtn");
   const themeToggle = document.getElementById("themeToggle");
   const toast = document.getElementById("toast");
 
@@ -340,7 +334,6 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       if (editingHabitId) {
         // Update existing habit
-        const habitRef = doc(firestore, "habits", editingHabitId); // Reference to the habit document
         habitData.updatedAt = Date.now(); // Add this line
 
         if (editingHabitId) {

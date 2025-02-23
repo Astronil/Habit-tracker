@@ -1,15 +1,15 @@
 // Import necessary Firebase functions
-import {
-  doc,
-  getDoc,
-  setDoc,
-} from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+// import {
+//   doc,
+//   getDoc,
+//   setDoc,
+// } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
 import {
   getDatabase,
   get,
   set,
   ref,
-  update,
+  // update,
 } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
 import {
   getAuth,
@@ -17,7 +17,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
 
 // Access Firestore from global scope
-const firestore = window.firebase.firestore;
+// const firestore = window.firebase.firestore;
 const database = getDatabase();
 
 class BiometricAuth {
