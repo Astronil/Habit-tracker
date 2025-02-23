@@ -18,7 +18,8 @@ import {
   deleteDoc,
   doc,
 } from "firebase/firestore";
-import { GoogleGenerativeAI } from "https://cdn.jsdelivr.net/npm/@google/generative-ai/+esm";
+// import { GoogleGenerativeAI } from "https://cdn.jsdelivr.net/npm/@google/generative-ai/+esm";
+import { GoogleGenerativeAI } from "./libs/google-generative-ai.js";
 import { GEMINI_API_KEY } from "./src/config.js";
 
 document.addEventListener("DOMContentLoaded", () => {
