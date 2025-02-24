@@ -537,7 +537,7 @@ document.addEventListener("DOMContentLoaded", () => {
   logoutBtn.addEventListener("click", async () => {
     try {
       await auth.signOut();
-      // window.location.href = "login.html";
+      window.location.href = "login.html";
     } catch (error) {
       console.error("Logout error:", error);
       showToast("Error logging out", true);
