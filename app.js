@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
       setupNotifications();
     } else {
       console.log("User not authenticated, redirecting to login.");
-      // window.location.href = "/Habit-tracker/login.html";
+      window.location.href = "/Habit-tracker/login.html";
     }
   });
 
