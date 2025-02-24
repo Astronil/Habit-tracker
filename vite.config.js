@@ -18,9 +18,9 @@ export default defineConfig({
         login: path.resolve(__dirname, "login.html"), // Additional entry point
       },
       output: {
-        entryFileNames: "assets/[name].js", // JS files in assets folder
-        chunkFileNames: "assets/[name].js",
-        assetFileNames: "assets/[name][extname]", // CSS and other assets
+        entryFileNames: "[name].js", // JS files in assets folder
+        chunkFileNames: "[name].js",
+        assetFileNames: "[name][extname]", // CSS and other assets
       },
     },
     outDir: "dist", // Ensure all built files go to 'dist'
