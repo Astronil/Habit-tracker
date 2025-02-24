@@ -23,7 +23,7 @@ export default defineConfig({
         assetFileNames: "[name][extname]", // CSS and other assets
       },
     },
-    outDir: "docs", // Ensure all built files go to 'dist'
+    outDir: "dist", // Ensure all built files go to 'dist'
   },
   base: "/Habit-tracker/",
 });
