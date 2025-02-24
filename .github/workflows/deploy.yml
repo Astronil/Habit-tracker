@@ -68,5 +68,13 @@ jobs:
       - name: Build with Vite
         run: npm run build # Runs Vite build process
 
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs # Ensure 'dist' is the Vite build output folder (default)
+
       - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v4
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
