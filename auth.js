@@ -180,7 +180,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         lastLogin: Date.now(),
       });
 
-      window.location.href = "index.html"; // Redirect to the dashboard
+      window.location.href = "/Habit-tracker/index.html"; // Redirect to the dashboard
     } catch (error) {
       console.error("Google sign-in error:", error);
       showToast(`Google sign-in error: ${error.message}`, true);
