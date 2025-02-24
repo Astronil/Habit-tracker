@@ -20,7 +20,7 @@ import {
 } from "firebase/firestore";
 // import { GoogleGenerativeAI } from "https://cdn.jsdelivr.net/npm/@google/generative-ai/+esm";
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { GEMINI_API_KEY } from "./src/config.js";
+import { GEMINI_API_KEY } from "./config.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   // Firebase instances
