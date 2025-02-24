@@ -25,4 +25,5 @@ export default defineConfig({
     },
     outDir: "docs", // Ensure all built files go to 'dist'
   },
+  base: "/Habit-tracker/",
 });
