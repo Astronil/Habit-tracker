@@ -23,6 +23,6 @@ export default defineConfig({
         assetFileNames: "[name][extname]", // CSS and other assets
       },
     },
-    outDir: "dist", // Ensure all built files go to 'dist'
+    outDir: "docs", // Ensure all built files go to 'dist'
   },
 });

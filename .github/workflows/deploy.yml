@@ -74,7 +74,7 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist # Ensure 'dist' is the Vite build output folder (default)
+          path: docs # Ensure 'dist' is the Vite build output folder (default)
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
