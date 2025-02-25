@@ -26,6 +26,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const database = getDatabase(app);
 const firestore = getFirestore(app);
+export { auth, firestore };
 
 // Make Firebase auth and database available globally
 window.firebase = {

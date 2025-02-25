@@ -1,12 +1,4 @@
-import {
-  getAuth,
-  GoogleAuthProvider,
-  signInWithPopup,
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-  updateProfile,
-  onAuthStateChanged,
-} from "firebase/auth";
+import { auth } from "./firebase-config.js";
 import { getDatabase, ref, update, get } from "firebase/database";
 
 // import {
