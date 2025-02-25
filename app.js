@@ -34,9 +34,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const database = window.firebase.database;
   const firestore = window.firebase.firestore;
 
-  // Elements
   const habitsList = document.getElementById("habitsList");
-  // habitsList.innerText = "";
+  if (!habitsList) {
+    console.error("Element with ID 'habitsList' not found.");
+    return; // Exit if the element is not found
+  }
+  habitsList.innerHTML = "";
   const addHabitBtn = document.getElementById("addHabitBtn");
   const habitModal = document.getElementById("habitModal");
   const habitForm = document.getElementById("habitForm");
