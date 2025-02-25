@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Elements
   const habitsList = document.getElementById("habitsList");
-  habitsList.innerHTML = "";
+  habitsList.innerText = "";
   const addHabitBtn = document.getElementById("addHabitBtn");
   const habitModal = document.getElementById("habitModal");
   const habitForm = document.getElementById("habitForm");
@@ -47,9 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const chatForm = document.getElementById("chatForm");
   const chatMessages = document.getElementById("chatMessages");
   const searchInput = document.getElementById("searchHabits");
-  const filterFrequency = document.getElementById("filterFrequency");
   const logoutBtn = document.getElementById("logoutBtn");
-  const generateQRBtn = document.getElementById("generateQRBtn");
   const themeToggle = document.getElementById("themeToggle");
   const toast = document.getElementById("toast");
 
