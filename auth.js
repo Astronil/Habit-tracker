@@ -342,35 +342,35 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   });
 
-  onAuthStateChanged(auth, (user) => {
-    const isLoginPage = window.location.pathname.includes("login.html");
+  // onAuthStateChanged(auth, (user) => {
+  //   const isLoginPage = window.location.pathname.includes("login.html");
 
-    if (user) {
-      if (isLoginPage) {
-        if (!sessionStorage.getItem("loggedIn")) {
-          if (!window.location.pathname.includes("index.html")) {
-            window.location.href = "login.html";
-          }
-        } else {
-          if (window.location.pathname.includes("login.html")) {
-            window.location.href = "index.html";
-          }
-        }
-      }
-    } else {
-      if (!isLoginPage) {
-        if (isLoginPage) {
-          if (!sessionStorage.getItem("loggedIn")) {
-            if (!window.location.pathname.includes("index.html")) {
-              window.location.href = "login.html";
-            }
-          } else {
-            if (window.location.pathname.includes("login.html")) {
-              window.location.href = "index.html";
-            }
-          }
-        }
-      }
-    }
-  });
+  //   if (user) {
+  //     if (isLoginPage) {
+  //       if (!sessionStorage.getItem("loggedIn")) {
+  //         if (!window.location.pathname.includes("index.html")) {
+  //           window.location.href = "login.html";
+  //         }
+  //       } else {
+  //         if (window.location.pathname.includes("login.html")) {
+  //           window.location.href = "index.html";
+  //         }
+  //       }
+  //     }
+  //   } else {
+  //     if (!isLoginPage) {
+  //       if (isLoginPage) {
+  //         if (!sessionStorage.getItem("loggedIn")) {
+  //           if (!window.location.pathname.includes("index.html")) {
+  //             window.location.href = "login.html";
+  //           }
+  //         } else {
+  //           if (window.location.pathname.includes("login.html")) {
+  //             window.location.href = "index.html";
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // });
 });
