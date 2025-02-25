@@ -23,7 +23,8 @@ import { getDatabase, ref, update, get } from "firebase/database";
 // } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
 import { BiometricAuth } from "./biometric-auth.js"; // Correct import for the class
 
-const auth = getAuth(); // Initialize Firebase Auth instance
+// const auth = getAuth();
+// Initialize Firebase Auth instance
 const database = getDatabase(); // Initialize Firebase Realtime Database
 // const firestore = getFirestore(); // Initialize Firestore
 
