@@ -170,7 +170,11 @@ export class BiometricAuth {
         await signInWithEmailAndPassword(auth, email, password);
         console.log("User successfully authenticated with Firebase.");
 
-        // window.location.href = "index.html"; // Redirect to the dashboard if authentication is successful
+        if (isAuthenticated && !sessionStorage.getItem("redirected")) {
+          sessionStorage.setItem("redirected", "true");
+          window.location.href = "login.html";
+        }
+        // Redirect to the dashboard if authentication is successful
         return true;
       } else {
         console.error("Biometric authentication failed");

@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // import 'firebase/auth';
   // import 'firebase/database';
   const auth = window.firebase.auth;
-  // const database = window.firebase.database;
+  const database = window.firebase.database;
   const firestore = window.firebase.firestore;
 
   // Elements
@@ -46,14 +46,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const chatForm = document.getElementById("chatForm");
   const chatMessages = document.getElementById("chatMessages");
   const searchInput = document.getElementById("searchHabits");
-  // const filterFrequency = document.getElementById("filterFrequency");
+  const filterFrequency = document.getElementById("filterFrequency");
   const logoutBtn = document.getElementById("logoutBtn");
-  // const generateQRBtn = document.getElementById("generateQRBtn");
+  const generateQRBtn = document.getElementById("generateQRBtn");
   const themeToggle = document.getElementById("themeToggle");
   const toast = document.getElementById("toast");
-  // Select the "All" button and other filter buttons
-  const filterButtons = document.querySelectorAll(".filter-btn");
-  const allButton = document.querySelector(".filter-btn[data-frequency='all']");
 
   let currentUser = null;
   let editingHabitId = null;
@@ -69,7 +66,10 @@ document.addEventListener("DOMContentLoaded", () => {
       setupNotifications();
     } else {
       console.log("User not authenticated, redirecting to login.");
-      window.location.href = "/Habit-tracker/login.html";
+      if (!sessionStorage.getItem("redirected")) {
+        sessionStorage.setItem("redirected", "true");
+        window.location.href = "login.html";
+      }
     }
   });
 
@@ -117,6 +117,10 @@ document.addEventListener("DOMContentLoaded", () => {
     ).textContent = `${stats.longestStreak} days`;
   }
 
+  // Select the "All" button and other filter buttons
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const allButton = document.querySelector(".filter-btn[data-frequency='all']");
+
   // Set "All" as the default filter
   function setDefaultFilter() {
     selectedFilters.add("all");
@@ -132,12 +136,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function toggleFilter(button) {
-    // Check if button exists
-    if (!button) {
-      console.error("Button is null or undefined!");
-      return;
-    }
-
     const frequency = button.dataset.frequency;
 
     if (frequency === "all") {
@@ -350,6 +348,7 @@ document.addEventListener("DOMContentLoaded", () => {
     try {
       if (editingHabitId) {
         // Update existing habit
+        const habitRef = doc(firestore, "habits", editingHabitId); // Reference to the habit document
         habitData.updatedAt = Date.now(); // Add this line
 
         if (editingHabitId) {
@@ -542,15 +541,14 @@ document.addEventListener("DOMContentLoaded", () => {
   logoutBtn.addEventListener("click", async () => {
     try {
       await auth.signOut();
-      window.location.href = "/Habit-tracker/login.html";
+      if (!sessionStorage.getItem("redirected")) {
+        sessionStorage.setItem("redirected", "true");
+        window.location.href = "login.html";
+      }
     } catch (error) {
       console.error("Logout error:", error);
       showToast("Error logging out", true);
     }
-  });
-  document.getElementById("logoutBtn").addEventListener("click", () => {
-    sessionStorage.removeItem("authenticated");
-    window.location.href = "/Habit-tracker/login.html";
   });
 
   // Close modals when clicking outside

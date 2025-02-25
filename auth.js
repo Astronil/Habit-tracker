@@ -84,7 +84,15 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      window.location.href = "/Habit-tracker/index.html";
+      if (!sessionStorage.getItem("loggedIn")) {
+        if (!window.location.pathname.includes("index.html")) {
+          window.location.href = "login.html";
+        }
+      } else {
+        if (window.location.pathname.includes("login.html")) {
+          window.location.href = "index.html";
+        }
+      }
     } catch (error) {
       console.error("Login error:", error);
       showToast(error.message, true);
@@ -154,7 +162,16 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       // Delay redirection to ensure biometric data is saved
       setTimeout(() => {
-        window.location.href = "/Habit-tracker/index.html"; // Redirect to home page
+        if (!sessionStorage.getItem("loggedIn")) {
+          if (!window.location.pathname.includes("index.html")) {
+            window.location.href = "login.html";
+          }
+        } else {
+          if (window.location.pathname.includes("login.html")) {
+            window.location.href = "index.html";
+          }
+        }
+        // Redirect to home page
       }, 1000); // 1 second delay
     } catch (error) {
       console.error("Registration error:", error);
@@ -181,7 +198,16 @@ document.addEventListener("DOMContentLoaded", async () => {
         lastLogin: Date.now(),
       });
 
-      window.location.href = "/Habit-tracker/index.html"; // Redirect to the dashboard
+      if (!sessionStorage.getItem("loggedIn")) {
+        if (!window.location.pathname.includes("index.html")) {
+          window.location.href = "login.html";
+        }
+      } else {
+        if (window.location.pathname.includes("login.html")) {
+          window.location.href = "index.html";
+        }
+      }
+      // Redirect to the dashboard
     } catch (error) {
       console.error("Google sign-in error:", error);
       showToast(`Google sign-in error: ${error.message}`, true);
@@ -227,7 +253,16 @@ document.addEventListener("DOMContentLoaded", async () => {
           await signInWithEmailAndPassword(auth, email, password);
           console.log("User signed in with stored credentials");
 
-          window.location.href = "/Habit-tracker/index.html"; // Redirect to the dashboard if biometric authentication is successful
+          if (!sessionStorage.getItem("loggedIn")) {
+            if (!window.location.pathname.includes("index.html")) {
+              window.location.href = "login.html";
+            }
+          } else {
+            if (window.location.pathname.includes("login.html")) {
+              window.location.href = "index.html";
+            }
+          }
+          // Redirect to the dashboard if biometric authentication is successful
         } else {
           throw new Error("Biometric user not found.");
         }
@@ -308,17 +343,33 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   onAuthStateChanged(auth, (user) => {
-    const isLoginPage = window.location.pathname.includes(
-      "/Habit-trackerlogin.html"
-    );
+    const isLoginPage = window.location.pathname.includes("login.html");
 
     if (user) {
       if (isLoginPage) {
-        window.location.href = "/Habit-tracker/index.html";
+        if (!sessionStorage.getItem("loggedIn")) {
+          if (!window.location.pathname.includes("index.html")) {
+            window.location.href = "login.html";
+          }
+        } else {
+          if (window.location.pathname.includes("login.html")) {
+            window.location.href = "index.html";
+          }
+        }
       }
     } else {
       if (!isLoginPage) {
-        window.location.href = "/Habit-tracker/login.html";
+        if (isLoginPage) {
+          if (!sessionStorage.getItem("loggedIn")) {
+            if (!window.location.pathname.includes("index.html")) {
+              window.location.href = "login.html";
+            }
+          } else {
+            if (window.location.pathname.includes("login.html")) {
+              window.location.href = "index.html";
+            }
+          }
+        }
       }
     }
   });
