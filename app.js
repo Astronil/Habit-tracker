@@ -8,7 +8,7 @@
 //   deleteDoc,
 //   doc,
 // } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
-import { auth } from "./firebase-config.js";
+import { auth, firestore } from "./firebase-config.js";
 import {
   collection,
   getDocs,
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // const database = window.firebase.database;
   // const firestore = window.firebase.firestore;
   // // Firebase Auth from module SDK
-  const firestore = getFirestore(); // Firebase Firestore from module SDK
+  // Firebase Firestore from module SDK
 
   const habitsList = document.getElementById("habitsList");
   if (!habitsList) {
