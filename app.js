@@ -30,9 +30,11 @@ document.addEventListener("DOMContentLoaded", () => {
   // import firebase from 'firebase/app';
   // import 'firebase/auth';
   // import 'firebase/database';
-  const auth = window.firebase.auth;
-  const database = window.firebase.database;
-  const firestore = window.firebase.firestore;
+  // const auth = window.firebase.auth;
+  // const database = window.firebase.database;
+  // const firestore = window.firebase.firestore;
+  const auth = getAuth(); // Firebase Auth from module SDK
+  const firestore = getFirestore(); // Firebase Firestore from module SDK
 
   const habitsList = document.getElementById("habitsList");
   if (!habitsList) {
@@ -188,8 +190,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // If no habits match, show message
-    if (habitsList.innerHTML === "") {
-      habitsList.innerText = "<p>No habits found.</p>";
+    if (Object.keys(habits).length === 0) {
+      habitsList.innerText = "No habits found.";
     }
   }
 
