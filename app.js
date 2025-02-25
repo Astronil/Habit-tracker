@@ -187,7 +187,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // If no habits match, show message
     if (habitsList.innerHTML === "") {
-      habitsList.innerHTML = "<p>No habits found.</p>";
+      habitsList.innerText = "<p>No habits found.</p>";
     }
   }
 
