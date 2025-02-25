@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   updateProfile,
+  onAuthStateChanged,
 } from "firebase/auth";
 import { getDatabase, ref, update, get } from "firebase/database";
 
@@ -83,7 +84,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      // window.location.href = "index.html";
+      window.location.href = "index.html";
     } catch (error) {
       console.error("Login error:", error);
       showToast(error.message, true);
@@ -153,7 +154,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       // Delay redirection to ensure biometric data is saved
       setTimeout(() => {
-        // window.location.href = "index.html"; // Redirect to home page
+        window.location.href = "index.html"; // Redirect to home page
       }, 1000); // 1 second delay
     } catch (error) {
       console.error("Registration error:", error);
@@ -226,7 +227,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           await signInWithEmailAndPassword(auth, email, password);
           console.log("User signed in with stored credentials");
 
-          // window.location.href = "index.html"; // Redirect to the dashboard if biometric authentication is successful
+          window.location.href = "index.html"; // Redirect to the dashboard if biometric authentication is successful
         } else {
           throw new Error("Biometric user not found.");
         }
@@ -306,23 +307,17 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   });
 
-  // Check authentication state
-  auth.onAuthStateChanged((user) => {
-    if (user) {
-      // Store last user for biometric auth
-      localStorage.setItem(
-        "lastUser",
-        JSON.stringify({
-          uid: user.uid,
-          email: user.email,
-          displayName: user.displayName,
-        })
-      );
+  onAuthStateChanged(auth, (user) => {
+    const isLoginPage = window.location.pathname.includes("login.html");
 
-      // // Redirect to dashboard if already logged in
-      // if (window.location.pathname.includes("login.html")) {
-      //   window.location.href = "index.html";
-      // }
+    if (user) {
+      if (isLoginPage) {
+        window.location.href = "/index.html";
+      }
+    } else {
+      if (!isLoginPage) {
+        window.location.href = "/login.html";
+      }
     }
   });
 });
