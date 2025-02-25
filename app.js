@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Elements
   const habitsList = document.getElementById("habitsList");
+  habitsList.innerHTML = "";
   const addHabitBtn = document.getElementById("addHabitBtn");
   const habitModal = document.getElementById("habitModal");
   const habitForm = document.getElementById("habitForm");
