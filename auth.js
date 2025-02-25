@@ -84,7 +84,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      window.location.href = "index.html";
+      window.location.href = "/Habit-tracker/index.html";
     } catch (error) {
       console.error("Login error:", error);
       showToast(error.message, true);
@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       // Delay redirection to ensure biometric data is saved
       setTimeout(() => {
-        window.location.href = "index.html"; // Redirect to home page
+        window.location.href = "/Habit-tracker/index.html"; // Redirect to home page
       }, 1000); // 1 second delay
     } catch (error) {
       console.error("Registration error:", error);
@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         lastLogin: Date.now(),
       });
 
-      window.location.href = "index.html"; // Redirect to the dashboard
+      window.location.href = "/Habit-tracker/index.html"; // Redirect to the dashboard
     } catch (error) {
       console.error("Google sign-in error:", error);
       showToast(`Google sign-in error: ${error.message}`, true);
@@ -227,7 +227,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           await signInWithEmailAndPassword(auth, email, password);
           console.log("User signed in with stored credentials");
 
-          window.location.href = "index.html"; // Redirect to the dashboard if biometric authentication is successful
+          window.location.href = "/Habit-tracker/index.html"; // Redirect to the dashboard if biometric authentication is successful
         } else {
           throw new Error("Biometric user not found.");
         }
@@ -308,15 +308,17 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   onAuthStateChanged(auth, (user) => {
-    const isLoginPage = window.location.pathname.includes("login.html");
+    const isLoginPage = window.location.pathname.includes(
+      "/Habit-trackerlogin.html"
+    );
 
     if (user) {
       if (isLoginPage) {
-        window.location.href = "/index.html";
+        window.location.href = "/Habit-tracker/index.html";
       }
     } else {
       if (!isLoginPage) {
-        window.location.href = "/login.html";
+        window.location.href = "/Habit-tracker/login.html";
       }
     }
   });

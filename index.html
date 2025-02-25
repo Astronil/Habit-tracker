@@ -12,7 +12,7 @@
     />
     <script>
       if (!sessionStorage.getItem("authenticated")) {
-        window.location.href = "./login.html";
+        window.location.href = "/Habit-tracker/login.html"; // Relative path should be fine
       }
     </script>
   </head>
@@ -82,9 +82,7 @@
         <div class="habits-filters">
           <div class="filter-group">
             <span>Frequency:</span>
-            <button class="filter-btn selected" data-frequency="all">
-              All
-            </button>
+            <button class="filter-btn" data-frequency="all">All</button>
             <button class="filter-btn" data-frequency="daily">Daily</button>
             <button class="filter-btn" data-frequency="weekly">Weekly</button>
           </div>

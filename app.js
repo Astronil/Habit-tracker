@@ -51,6 +51,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // const generateQRBtn = document.getElementById("generateQRBtn");
   const themeToggle = document.getElementById("themeToggle");
   const toast = document.getElementById("toast");
+  // Select the "All" button and other filter buttons
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const allButton = document.querySelector(".filter-btn[data-frequency='all']");
 
   let currentUser = null;
   let editingHabitId = null;
@@ -114,10 +117,6 @@ document.addEventListener("DOMContentLoaded", () => {
     ).textContent = `${stats.longestStreak} days`;
   }
 
-  // Select the "All" button and other filter buttons
-  const filterButtons = document.querySelectorAll(".filter-btn");
-  const allButton = document.querySelector(".filter-btn[data-frequency='all']");
-
   // Set "All" as the default filter
   function setDefaultFilter() {
     selectedFilters.add("all");
@@ -133,6 +132,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   function toggleFilter(button) {
+    // Check if button exists
+    if (!button) {
+      console.error("Button is null or undefined!");
+      return;
+    }
+
     const frequency = button.dataset.frequency;
 
     if (frequency === "all") {
@@ -537,11 +542,15 @@ document.addEventListener("DOMContentLoaded", () => {
   logoutBtn.addEventListener("click", async () => {
     try {
       await auth.signOut();
-      window.location.href = "login.html";
+      window.location.href = "/Habit-tracker/login.html";
     } catch (error) {
       console.error("Logout error:", error);
       showToast("Error logging out", true);
     }
+  });
+  document.getElementById("logoutBtn").addEventListener("click", () => {
+    sessionStorage.removeItem("authenticated");
+    window.location.href = "/Habit-tracker/login.html";
   });
 
   // Close modals when clicking outside
